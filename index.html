@@ -1,157 +1,98 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鳳山高中衛生糾察隊</title>
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watercolor Landing Page</title>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="decoration waterfall" style="top: 10%; left: 15%; animation-delay: 1s"></div>
+    <div class="decoration star" style="top: 20%; left: 80%; animation-delay: 2s"></div>
+    <div class="decoration snowflake" style="top: 70%; left: 5%; animation-delay: 3s"></div>
+    <div class="decoration waterfall" style="top: 80%; left: 70%; animation-delay: 4s"></div>
+    <div class="decoration star" style="top: 40%; left: 30%; animation-delay: 5s"></div>
 
-    <style>
-        /* 基礎樣式設定 */
-        html {
-            scroll-behavior: smooth; 
-            font-family: '微軟正黑體', sans-serif;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #fcfcfc;
-            overflow-x: hidden; /* 防止動畫滑出導致出現橫向捲軸 */
-        }
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="menuPanel"
+    >
+      <span></span><span></span><span></span>
+    </button>
 
-        /* 漢堡選單 (右上角) */
-        header {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        .menu-btn {
-            font-size: 35px;
-            cursor: pointer;
-            background: #fff;
-            border: 2px solid #333;
-            border-radius: 5px;
-            padding: 5px 10px;
-        }
+    <aside class="menu-panel" id="menuPanel" aria-hidden="true">
+      <nav>
+        <a href="#hero">HOME 首頁</a>
+        <a href="#next">ABOUT 關於衛糾</a>
+        <a href="#duty">DUTY 工作內容</a>
+        <a href="#contact">JOIN 加入我們</a>
+      </nav>
+    </aside>
 
-        /* 側邊導覽連結 */
-        .nav-links {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 250px;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.95);
-            transition: 0.4s;
-            padding-top: 80px;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            z-index: 999;
-        }
-        .nav-links.active { right: 0; }
-        .nav-links a {
-            display: block;
-            padding: 20px;
-            color: #333;
-            text-decoration: none;
-            font-size: 1.2em;
-            text-align: center;
-        }
-        .nav-links a:hover { background-color: #f0f0f0; }
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero__background" aria-hidden="true"></div>
 
-        /* 內容區塊共通樣式 */
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 50px;
-            box-sizing: border-box;
-            border-bottom: 1px solid #eee;
-        }
+        <a class="avatar" id="avatar" href="#hero" aria-label="Profile avatar">
+          <img src="head.jpg" alt="Profile" decoding="async" fetchpriority="high" />
+        </a>
 
-        h1 { font-size: 3.5em; color: #2c3e50; margin-bottom: 10px; }
-        h2 { font-size: 2.5em; color: #34495e; }
-        p { font-size: 1.2em; line-height: 1.6; max-width: 600px; text-align: center; }
-
-        /* 照片佔位框 */
-        .photo-placeholder {
-            width: 80%;
-            max-width: 700px;
-            height: 400px;
-            background-color: #e0e0e0;
-            margin-top: 30px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    </header>
-
-    <div class="nav-links" id="myNav">
-        <a href="#home" onclick="toggleMenu()">首頁</a>
-        <a href="#intro" onclick="toggleMenu()">關於衛糾</a>
-        <a href="#duty" onclick="toggleMenu()">日常任務</a>
-        <a href="#contact" onclick="toggleMenu()">加入我們</a>
-    </div>
-
-    <section id="home">
-        <h1 data-aos="zoom-in" data-aos-duration="1500">鳳山高中 衛生糾察隊</h1>
-        <p data-aos="fade-up" data-aos-delay="500">傳承責任，守護校園環境的先鋒。</p>
-    </section>
-
-    <section id="intro" style="background-color: #f9f9f9;">
-        <h2 data-aos="fade-right">關於我們</h2>
-        <p data-aos="fade-right" data-aos-delay="200">
-            我們是學校環境的守護者，負責維護校園整潔與資源回收的重任。
-        </p>
-        <div class="photo-placeholder" data-aos="flip-up" data-aos-delay="400">
-            [ 這裡放隊伍合照 ]
+        <div class="blob-wrapper" id="blobWrapper">
+          <div class="blob-wrapper__blob" aria-hidden="true"></div>
+          <article class="info-card" id="infoCard">
+            <h1>報名開跑囉!!!</h1>
+            <p>
+              Replace this text with your message. The capsule shape is fully rounded and ready
+              for your brand story.
+            </p>
+            <a href="#next" class="info-card__link">Explore more</a>
+          </article>
         </div>
-    </section>
 
-    <section id="duty">
-        <h2 data-aos="fade-left">日常任務</h2>
-        <p data-aos="fade-left" data-aos-delay="200">
-            從晨間檢查到資源回收指導，每一份細心都是為了更好的鳳中。
-        </p>
-        <div class="photo-placeholder" data-aos="zoom-in-up" data-aos-delay="400">
-            [ 這裡放執勤照片 ]
+        <a
+          class="instagram"
+          id="instagram"
+          href="https://www.instagram.com/fssh_wsjc/"
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label="Visit our Instagram"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <circle cx="17.5" cy="6.5" r="1.2"></circle>
+          </svg>
+        </a>
+      </section>
+
+      <section class="subpage subpage--story" id="next" aria-label="Story section">
+        <div class="subpage__content">
+          <h2>關於衛糾 Story</h2>
+          <p>Story page background style with subtle watercolor corners and clear center.</p>
         </div>
-    </section>
+      </section>
 
-    <section id="contact" style="background-color: #f0f4f8;">
-        <h2 data-aos="fade-up">加入我們</h2>
-        <p data-aos="fade-up" data-aos-delay="200">歡迎有志服務、充滿熱血的學弟妹報名！</p>
-        <div class="photo-placeholder" data-aos="fade-up" data-aos-delay="400">
-            [ 這裡放招生海報 ]
+      <section class="subpage subpage--duty" id="duty" aria-label="Duty section">
+        <div class="subpage__content">
+          <h2>日常任務 Duty</h2>
+          <p>Duty page background style with organic edges and precision-like ink drops.</p>
         </div>
-    </section>
+      </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // 初始化動畫設定
-        AOS.init({
-            duration: 1000, // 動畫持續時間 (1秒)
-            once: false,    // 是否只執行動畫一次 (設為 false 則每次滑到都會觸發)
-            mirror: true,   // 往回捲動時是否也要有動畫
-        });
+      <section class="subpage subpage--contact" id="contact" aria-label="Contact section">
+        <div class="subpage__content">
+          <h2>聯絡我們 Contact</h2>
+          <p>Contact page background style with warm overlapping blobs and star accents.</p>
+        </div>
+      </section>
+    </main>
 
-        // 選單開關功能
-        function toggleMenu() {
-            document.getElementById("myNav").classList.toggle("active");
-        }
-    </script>
-</body>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </body>
 </html>
