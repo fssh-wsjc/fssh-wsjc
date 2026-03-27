@@ -1,6 +1,7 @@
 const instagram = document.querySelector('#instagram');
 const blobWrapper = document.querySelector('#blobWrapper');
 const avatar = document.querySelector('#avatar');
+const heroBackground = document.querySelector('.hero__background');
 const hamburger = document.querySelector('#hamburger');
 const menuPanel = document.querySelector('#menuPanel');
 const menuLinks = menuPanel ? menuPanel.querySelectorAll('a') : [];
@@ -27,6 +28,18 @@ function setupAnimations() {
   });
 
   if (!reducedMotion && ScrollTrigger) {
+    if (heroBackground) {
+      ScrollTrigger.create({
+        trigger: '#hero',
+        start: 'top top',
+        endTrigger: '#next',
+        end: 'top 42%',
+        pin: heroBackground,
+        pinSpacing: false,
+        anticipatePin: 1
+      });
+    }
+
     const exitTimeline = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -67,6 +80,21 @@ function setupAnimations() {
         },
         0
       );
+
+    if (heroBackground) {
+      gsap.to(heroBackground, {
+        yPercent: -22,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#next',
+          start: 'top 42%',
+          end: 'top top',
+          scrub: 0.5,
+          fastScrollEnd: true,
+          invalidateOnRefresh: true
+        }
+      });
+    }
   }
 }
 
